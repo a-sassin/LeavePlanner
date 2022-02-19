@@ -1,0 +1,60 @@
+{
+    "name": "leaveplanner-backend",
+    "description": "LeavePlanner-Backend",
+    "main": "server.js",
+    "scripts": {
+        "start": "ENVIRONMENT=$ENVIRONMENT node server.js",
+        "dev": "nodemon server.js",
+        "fmt-check": "prettier --check \"**/*.{js,json}\"",
+        "lint": "eslint .",
+        "lint-fix": "eslint . --fix",
+        "fmt-fix": "prettier --write \"**/*.{js,json}\"",
+        "sonar": "ENVIRONMENT=$ENVIRONMENT node sonar-project.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://gsgit.gslab.com/poojithullasa/LeavePlanner-Backend.git"
+    },
+    "dependencies": {
+        "activedirectory": "^0.7.2",
+        "crypto-js": "^4.0.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "formidable": "^1.2.2",
+        "husky": "^3.0.9",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "mongoose": "^5.12.0",
+        "nodemailer": "^6.5.0",
+        "sonarqube-scanner": "^2.8.0",
+        "validator": "^13.5.2"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-conventional": "^8.3.4",
+        "eslint": "^7.22.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.22.1",
+        "nodemon": "^2.0.2",
+        "prettier": "^1.18.2"
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "printWidth": 80,
+        "endOfLine": "lf"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "npm run lint-fix && npm run fmt-fix"
+        }
+    }
+}

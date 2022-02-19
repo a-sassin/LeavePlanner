@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+     
+    stages {
+        stage('Building Docker Image Build') {
+             
+            steps {
+               sh "docker build -t poojithullasa/leaveplanner-backend:latest ."
+            }
+        }
+        stage('Stopping Previous Build and Removing Stopped Containers and Cache') {
+             
+            steps {
+               sh "docker container rm -f LeavePlanner-Backend | echo true"
+               sh "docker system prune -f"
+            }
+        }
+        stage('Running Docker Build https://10.43.12.61:3000/') {
+             
+            steps {
+               sh "docker run -p 3000:3000 -d --name LeavePlanner-Backend poojithullasa/leaveplanner-backend:latest"
+            }
+        }
+    }
+}
