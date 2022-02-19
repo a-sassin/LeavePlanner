@@ -1,0 +1,81 @@
+<!-- Delete Team Dialog Box -->
+<div *ngIf="!active && !cancelLeave  && !delOwnerFlag">
+    <app-loading-spinner></app-loading-spinner>
+    <mat-dialog-content class="content">
+        <p class="title">
+            Delete Team- <strong title="{{data.teamName}}">{{ teamNameLength(data.teamName) }}</strong>
+        </p>
+        <p class="subtitle">
+            <span class="info-icon">
+        <img src="./assets/images/info_black_24dp.svg" alt="image"/>
+      </span> This will delete your team permanently
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions class="action">
+        <button mat-flat-button class="delete-btn" (click)="deleteTeam(data.teamId)">
+      Delete
+    </button>
+        <button mat-flat-button class="cancel-btn" (click)="onCancel()">
+      Cancel
+    </button>
+    </mat-dialog-actions>
+</div>
+<!-- Success Leave Dialog Box -->
+<div *ngIf="active">
+    <mat-dialog-content class="content">
+        <p class="heading">Leave Declared Successfully</p>
+        <div class="limit">
+            <p>
+                From {{ data.fromDate | date: 'MMM d' }} - To {{ data.toDate | date: 'MMM d' }}
+            </p>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="leave-actions">
+        <button mat-flat-button mat-dialog-close class="ok-button">
+      Ok
+    </button>
+    </mat-dialog-actions>
+</div>
+<!-- Cancel Leave Dialog Box -->
+<div *ngIf="cancelLeave">
+    <mat-dialog-content class="content">
+        <p class="title">
+            Cancel Leave
+        </p>
+        <p class="subtitle">
+            <span class="info-icon">
+        <img src="./assets/images/info_black_24dp.svg" alt="image"/>
+      </span> Are you sure you want to cancel your leave
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions class="action">
+        <button mat-flat-button class="delete-btn" (click)="deleteLeave(data.leaveId)">
+      Yes
+    </button>
+        <button mat-flat-button class="cancel-btn" (click)="onClickNo()">
+      No
+    </button>
+    </mat-dialog-actions>
+</div>
+<!-- Owner delete himself/herself  -->
+<div *ngIf="delOwnerFlag">
+    <app-loading-spinner></app-loading-spinner>
+    <mat-dialog-content class="content">
+        <p class="title">
+            Delete Owner
+        </p>
+        <p class="subtitle">
+            <span class="info-icon">
+        <img src="./assets/images/info_black_24dp.svg" alt="image"/>
+      </span> Deleting this record will delete team, are you sure?
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions class="action">
+        <button mat-flat-button class="delete-btn" (click)="deleteOwner(data.teamId,data.teamName,data.memberstoadd,data.memberstodelete)">
+      Yes
+    </button>
+        <button mat-flat-button class="cancel-btn" (click)="onClickNo()">
+      No
+    </button>
+    </mat-dialog-actions>
+</div>

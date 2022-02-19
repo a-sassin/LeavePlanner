@@ -1,0 +1,113 @@
+<div class="all-input-legends">
+    <div class="input">
+        <div class="arrow">
+            <abbr title="Go Back" class="name-abbr">
+                <button mat-icon-button>
+                    <mat-icon class="arrow-cursor" (click)="arrow()">arrow_back</mat-icon>
+                </button>
+            </abbr>
+        </div>
+        <div class="input-2">
+            <div class="team-name">
+                <div>{{ teamName }}</div>
+            </div>
+            <div class="time">
+                <div class="arrow" (click)="changeMonth('previous')">
+                    <img src="./assets/images/left.png" alt="left" class="left" />
+                </div>
+                <mat-form-field class="datePicker">
+                    <input readonly matInput [matDatepicker]="dp" [formControl]="date" (click)="dp.open()"/>
+                    <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+                        (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
+                    </mat-datepicker>
+                </mat-form-field>
+                <div class="arrow" (click)="changeMonth('next')">
+                    <img id="right" src="./assets/images/left.png" alt="right" class="left"/>
+                </div>
+            </div>
+        </div>
+        <div class="info-search">
+            <div class="search-bar">
+                <mat-form-field class="search-box" floatLabel="never">
+                    <input matInput type="text" placeholder="Search" class="search" [(ngModel)]="nameSearch" />
+                    <mat-icon matSuffix class="search-icon">search</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="leaves">
+        <div class="color-1"></div><abbr title="Paternity Leave"><span class="color-8">PTL</span></abbr>
+        <div class="color-2"></div><abbr title="Privilege Leave"><span class="color-8">PL</span></abbr>
+        <div class="color-3"></div><abbr title="Unpaid Leave"><span class="color-8">UL</span></abbr>
+        <div class="color-4"></div><abbr title="Adoption Leave"><span class="color-8">AL</span></abbr>
+        <div class="color-5"></div><abbr title="Family and Emergency Leave"><span class="color-8">FEL</span></abbr>
+        <div class="color-7"></div><abbr title="Unplanned Leave"><span class="color-8">UPL</span></abbr>
+        <div class="color-9"></div><abbr title="Absent"><span class="color-8">Ab</span></abbr>
+        <div class="color-6"></div><abbr title="Floating Holiday"><span class="color-8">FH</span></abbr>
+        <div class="color-10"></div><abbr title="Holidays"><span class="color-8">H</span></abbr>
+    </div>
+</div>
+<app-loading-spinner *ngIf="isLoading" class="loading"></app-loading-spinner>
+<div class="scroll">
+    <div class="all" *ngIf="!isLoading">
+        <div class="sticky-dates">
+            <div class="left-box">
+                <div class="employee">
+                    <div class="heading">Employees</div>
+                    <div class="side-head">{{ usersLength }} {{ member }}</div>
+                </div>
+                <div class="all-dates" *ngFor="let week of weekAndMonthDays">
+                    <div class="month">
+                        <abbr title="{{dayName(week.day)}}" class="name-abbr">
+                            <div class="day">{{ week.day }}</div>
+                        </abbr>
+                        <div class="date">{{ week.date }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="all-names">
+            <div class="names" *ngFor="let user of users | sortAlphabet | filter: nameSearch">
+                <div class="all-name">
+                    <abbr title="{{user.name}}, {{user.empId}}" class="name-abbr">
+                        <div class="name">{{ text(user.name) }}</div>
+                    </abbr>
+                </div>
+                <div class="all-boxes">
+                    <div *ngFor="let week of weekAndMonthDays; let date = index">
+                        <abbr title="{{week.date}}/{{month}}/{{year}}">
+                            <div class=" boxes " [ngClass]="boxColor(week.date, user.empId)">
+                                <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu"
+                                    aria-label="Example icon-button with a menu" [disabled]="disableClick">
+                                </button>
+
+                                <mat-menu #menu="matMenu" class="mat-menu">
+                                    <div class="menu">
+                                        <div class="top-div">
+                                            <p>Add Absentism</p>
+                                        </div>
+                                        <span class="newDate">{{ week.date }}/{{ month }}/{{ year }}</span>
+                                        <div class="absent-cancel">
+                                            <button mat-menu-item class="btn-cancel">
+                                                Cancel
+                                            </button>
+                                            <button mat-menu-item class="btn-absent" *ngIf="isDeleteAbsent"
+                                                (click)="absentLeave(user.empId, user.name, week.date)">
+                                                Absent
+                                            </button>
+                                            <button mat-menu-item class="btn-absent" *ngIf="!isDeleteAbsent"
+                                                (click)="deleteLeave(user.empId, week.date)">
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </mat-menu>
+                            </div>
+                        </abbr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading-spinner *ngIf="isLoadingAbsent" class="loading"></app-loading-spinner> <br>

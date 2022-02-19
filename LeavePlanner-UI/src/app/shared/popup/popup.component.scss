@@ -1,0 +1,85 @@
+.title {
+  font-size: 20px;
+  color: #000000;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 20px;
+  text-align: center;
+}
+.subtitle {
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: normal;
+  margin-left: 20px;
+  color: red;
+}
+.info-icon {
+  position: relative;
+}
+img {
+  position: absolute;
+  bottom: 0;
+  right: 3px;
+}
+.delete-btn,
+.cancel-btn {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+}
+.delete-btn {
+  background-color: white;
+  color: #242424;
+}
+.cancel-btn {
+  color: #1352ca;
+}
+.action {
+  display: flex;
+  justify-content: space-evenly;
+}
+.heading {
+  font-size: 26px;
+  color: #13bbba;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 15px;
+  text-align: center;
+}
+.limit {
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: normal;
+  color: #000000;
+  margin-top: 5px;
+}
+.leave-actions {
+  justify-content: center;
+  margin-top: 10px;
+}
+.ok-button {
+  width: 100px;
+  font-size: 22px;
+  font-weight: 500;
+  color: white;
+  background-color: #1352ca;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: -1px 9px 6px 0 rgba(11, 100, 202, 0.16);
+  border-radius: 6px;
+}

@@ -1,0 +1,46 @@
+.heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  color: #5a5a5a;
+  margin-top: 40px;
+  text-align: center;
+}
+.container {
+  margin-top: 60px;
+}
+.form-field {
+  width: 430px;
+  display: block;
+  margin: auto;
+}
+.buttons {
+  display: flex;
+  width: 430px;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 45px;
+  margin-left: 65px;
+}
+.cancel-button,
+.declare-button {
+  width: 200px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  padding: 5px;
+}
+.cancel-button {
+  color: #0b64ca;
+  background-color: white;
+  border: 1px solid #0b64ca;
+}
+.declare-button {
+  color: white;
+  background-color: #0b64ca;
+}
+button:enabled {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}

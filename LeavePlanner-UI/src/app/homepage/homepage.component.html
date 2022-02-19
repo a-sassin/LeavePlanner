@@ -1,0 +1,72 @@
+<mat-toolbar class="topnavbar" *ngIf="!isLogIn">
+    <div class="ham">
+        <mat-icon class="menu" (click)="sidenav.toggle()">menu</mat-icon>
+        <div class="topnavbar-heading" routerLink="/dashboard/home">
+            <img src="./assets/images/favicon.png" alt="logo" class="image" />
+            <span class="heading">Leave Planner</span>
+        </div>
+    </div>
+  <div>
+    <app-loading-spinner></app-loading-spinner>
+    <button mat-icon-button [matMenuTriggerFor]="request" aria-label="Example icon-button with a menu"
+      class="notify-button">
+      <mat-icon [matBadge]="count" [matBadgeHidden]="count===0" matBadgeColor="warn">notifications</mat-icon>
+    </button>
+    <mat-menu #request="matMenu">
+      <mat-list-item *ngFor="let message of user let arrIndex=index">
+        <div class="request-date">{{message.updatedAt|date:'d/M/y'}}</div>
+        <div *ngIf="count>0" class="list-content">{{message.currentOwner}} wants you to become the owner of the team
+          <b>{{message.teamName}}</b>.
+        </div>
+        <div class="btn">
+          <button mat-button class="decline-btn" (click)="onDecline('Declined',message.teamId,arrIndex)">
+            Decline
+          </button>
+          <button mat-button class="accept-btn" (click)="onAccept('Accepted',message.teamId,arrIndex)">
+            Accept
+          </button>
+        </div>
+        <mat-divider *ngIf="arrIndex!=count-1" class="list-divider"></mat-divider>
+      </mat-list-item>
+      <div *ngIf="count===0" class="list-nocontent">No Notification</div>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+      class="profile-button">
+      <mat-icon class="profile">account_circle</mat-icon>
+    </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onClick(sidenav)">
+        <span>Logout</span>
+        <mat-icon class="logout">logout</mat-icon>
+      </button>
+        </mat-menu>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container class="sidenavcontainer">
+    <mat-sidenav #sidenav mode="over" class="sidenav">
+        <mat-nav-list class="nav-list">
+            <p class="sidenav-menu">Menu</p>
+            <mat-list-item class="list-items" (click)="sidenav.toggle()" routerLink="/dashboard/home">
+                <mat-icon class="icon">home</mat-icon>
+                <a class="item">Home</a>
+            </mat-list-item>
+            <mat-list-item class="list-items" (click)="sidenav.toggle()" routerLink="/dashboard/manage-leaves">
+                <mat-icon class="icon">dvr</mat-icon>
+                <a class="item">Manage My Leave</a>
+            </mat-list-item>
+            <mat-list-item class="list-items" *ngIf="isAdmin" (click)="sidenav.toggle()" routerLink="/dashboard/holiday">
+                <mat-icon class="icon">event_available</mat-icon>
+                <a class="item">Upload holiday file</a>
+            </mat-list-item>
+            <mat-divider class="divider"></mat-divider>
+            <p class="sidenav-teams">Teams</p>
+            <mat-list-item class="list-items" (click)="sidenav.toggle()" routerLink="/dashboard/create-team">
+                <mat-icon class="icon">group_add</mat-icon>
+                <a class="item">Create New Team</a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,45 @@
+<app-loading-spinner></app-loading-spinner>
+<div mat-dialog-title>
+    <h2 class="heading">{{title}}</h2>
+</div>
+<mat-dialog-content class="container">
+    <form [formGroup]="addLeaveForm">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Date Range</mat-label>
+            <mat-date-range-input [rangePicker]="picker" [dateFilter]="myHolidayFilter" required>
+                <input matStartDate formControlName="fromDate" placeholder="Start date">
+                <input matEndDate formControlName="toDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker [dateClass]="dateClass" (yearSelected)="chosenYearHandler($event)" #picker>
+            </mat-date-range-picker>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Type Leave</mat-label>
+            <mat-select formControlName="type" required>
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let leave of leaves" [value]="leave">{{ leave }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Reason</mat-label>
+            <textarea matInput formControlName="reason" placeholder="Reason for Leave" required></textarea>
+        </mat-form-field>
+
+        <div class="buttons">
+            <button mat-stroked-button type="button" class="cancel-button" (click)="onCancel()" mat-dialog-close>
+        Cancel
+      </button>
+            <button *ngIf="active" mat-raised-button color="primary" type="submit" (click)="onUpdateLeave()" class="declare-button" [disabled]="!addLeaveForm.dirty|| !addLeaveForm.valid">
+        Update
+      </button>
+            <button *ngIf="!active" mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="declare-button" [disabled]="!addLeaveForm.valid">
+        Declare
+      </button>
+        </div>
+
+    </form>
+</mat-dialog-content>

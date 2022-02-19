@@ -1,0 +1,136 @@
+<div class="team-form">
+    <div class="top-header">
+        <abbr title="Go Back" class="name-abbr">
+            <button mat-icon-button>
+                <mat-icon class="arrow-cursor" (click)="onArrow()">arrow_back</mat-icon>
+            </button>
+        </abbr>
+    </div>
+    <div class="top-outer-img"><img class="top-img" src="./assets/images/worker.png" alt="worker-image"></div>
+    <div>
+        <mat-card class="card">
+            <div class="header">
+                <img *ngIf="!reqTransfer" class="img" src="./assets/images/Create Team.png" alt="team-iamge" />
+                <mat-card-title *ngIf="!isEdit && !reqTransfer" class="inline-class">Create Team</mat-card-title>
+                <mat-card-title *ngIf="isEdit" class="inline-class">Update Team</mat-card-title>
+                <mat-card-title *ngIf="reqTransfer" class="inline-class">Transfer Ownership</mat-card-title>
+            </div>
+            <app-loading-spinner></app-loading-spinner>
+            <mat-card-content>
+                <form [formGroup]="teamForm">
+                    <div class="outer-form">
+                        <div *ngIf="!reqTransfer">
+                            <mat-form-field class="form-field-name" appearance="outline">
+                                <mat-label class="label">{{isEdit?'Update Team Name':'Enter Team Name'}}</mat-label>
+                                <input matInput type="text" formControlName="teamName" maxlength='15' required #name />
+                                <mat-error *ngIf="teamForm.get('teamName').hasError('whitespace')">
+                                    <span>Whitespace are not allowed.</span>
+                                </mat-error>
+                                <mat-error *ngIf="teamForm.get('teamName').hasError('required')">
+                                    <span>This field is required.</span>
+                                </mat-error>
+                            </mat-form-field>
+                            <span class="len-count">{{name.value.length }}/15</span>
+                        </div>
+                        <div *ngIf="reqTransfer">
+                            <mat-form-field class="form-field-name" appearance="outline">
+                                <mat-label class="label">{{'Team Name'}}</mat-label>
+                                <input matInput type="text" formControlName="teamName" readonly />
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="!reqTransfer">
+                            <mat-form-field class="add-form-field" appearance="outline">
+                                <mat-label class="label">Add Team Members</mat-label>
+                                <mat-chip-list #chipList>
+                                    <mat-chip *ngFor="let employee of allSelectedEmployeesList"
+                                        [selectable]="selectable" [removable]="removable" (removed)="remove(employee)"
+                                        class="add-chip">
+                                        {{ employee.name }}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
+                                    <input matInput type="text" #employeeInput formControlName="addTeamMember"
+                                        [matAutocomplete]="auto" [matChipInputFor]="chipList" />
+                                </mat-chip-list>
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                    <mat-option *ngFor="let employees of filteredEmployees" [value]="employees"
+                                        class="list-height">
+                                        <span class="empname-color">{{ employees.name }}</span><br />
+                                        <small class="list-label">{{ employees.empId }}</small>
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="isEdit">
+                            <mat-form-field class="del-form-field" appearance="outline">
+                                <mat-label class="label">Delete Team Members</mat-label>
+                                <mat-chip-list #delchipList>
+                                    <mat-chip *ngFor="let employee of deletedTeamEmployeesList"
+                                        [selectable]="selectable" [removable]="removable"
+                                        (removed)="removeemployee(employee)" class="del-chip">
+                                        {{ employee.name }}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
+                                    <input matInput type="text" #delemployeeInput formControlName="deleteTeamMember"
+                                        [matAutocomplete]="delauto" [matChipInputFor]="delchipList" />
+                                </mat-chip-list>
+                                <mat-autocomplete #delauto="matAutocomplete" (optionSelected)="selecteddelemp($event)">
+                                    <mat-option *ngFor="let employees of filteredTeamEmployees | async"
+                                        [value]="employees" class="list-height">
+                                        <span class="empname-color">{{ employees.name }}</span><br />
+                                        <small class="list-label">{{ employees.empId }}</small>
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="reqTransfer">
+                            <mat-form-field class="transfer-form-field" appearance="outline">
+                                <mat-label class="label">Transfer Ownership</mat-label>
+                                <input matInput type="text" #transferOwner formControlName="transferOwnership"
+                                    [matAutocomplete]="ownershipauto" required />
+                                <mat-error *ngIf="teamForm.get('transferOwnership').hasError('required')">
+                                    <span>This field is required.</span>
+                                </mat-error>
+                                <mat-autocomplete #ownershipauto="matAutocomplete" (optionSelected)="transfer($event)"
+                                    [displayWith]="displayFn">
+                                    <mat-option *ngFor="let employees of listAllEmployeess" [value]="employees"
+                                        class="list-height">
+                                        <span class="empname-color">{{ employees.name }}</span><br />
+                                        <small class="list-label">{{ employees.empId }}</small>
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div [ngClass]="[isEdit?'update-btn':'create-btn']">
+                        <button mat-stroked-button class="btn-cancel" type="button" (click)="onCancel()">
+                            Cancel
+                        </button>
+                        <button *ngIf="isEdit" mat-raised-button type="button" class="btn-submit" (click)="onUpdate()"
+                            [disabled]="checkDisabled()">
+                            Update
+                        </button>
+                        <button *ngIf="!isEdit && !reqTransfer" mat-raised-button type="button" class="btn-submit"
+                            (click)="onCreate()" [disabled]="!teamForm.valid">
+                            Create
+                        </button>
+                        <button *ngIf="reqTransfer" mat-raised-button type="button" class="btn-submit"
+                            (click)="onTransferOnwership()" [disabled]="checkDisabled()">
+                            Transfer
+                        </button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="bottom-outer-img">
+        <img class="bottom-img" src="./assets/images/Group 16758.png" alt="image">
+    </div>
+    <div class="big-circle-bottom"></div>
+    <div class="circle-bottom">
+        <img class="img-corner-bottom" src="./assets/images/programmer (1).png" alt="image">
+    </div>
+    <div class="big-circle-top"></div>
+    <div class="circle-top">
+        <img class="img-corner-top" src="./assets/images/administrator.png" alt="image">
+    </div>
+</div>

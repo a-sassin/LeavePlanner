@@ -1,0 +1,432 @@
+.all-input-legends {
+  position: sticky;
+  z-index: 1;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  top: 45px;
+  position: fixed;
+  width: 100%;
+  height: 95px;
+  background-color: #fafafa;
+  padding-top: 10px;
+}
+.datePicker {
+  width: 65px;
+  padding-top: 8px;
+  input {
+    color: #0b64ca;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+}
+.left {
+  margin-right: 10px;
+  width: 25px;
+  margin-bottom: 9px;
+}
+.arrow {
+  cursor: pointer;
+  margin-bottom: 20px;
+  :hover {
+    background-color: #d9d9d9;
+    border-radius: 3px;
+  }
+}
+#right {
+  transform: rotate(180deg);
+}
+.info-search {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 41px;
+}
+.time {
+  display: flex;
+  justify-content: center;
+}
+.team-name,
+.time {
+  padding-left: 10px;
+}
+
+.team-name {
+  color: #ff8f10;
+  margin-bottom: 14px;
+  font-size: 22px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 150px;
+}
+
+.search {
+  font-size: 15px;
+}
+
+.search-box {
+  width: 200px;
+  margin-right: 20px;
+  margin-top: 11px;
+}
+
+.search-icon {
+  color: #0b64ca;
+  font-size: large;
+}
+
+.arrow {
+  margin-left: 16px;
+  margin-top: 21px;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.leaves {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 140px;
+  position: fixed;
+  width: 100%;
+  padding-bottom: 20px;
+  background-color: #fafafa;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.color-8 {
+  margin-right: 17px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: #242424;
+}
+
+.color-1,
+.color-2,
+.color-3,
+.color-4,
+.color-5,
+.color-6,
+.color-7,
+.color-9,
+.color-10 {
+  width: 13px;
+  height: 13px;
+  border-radius: 22px;
+  margin-right: 5px;
+}
+
+.color-1 {
+  border: 0.1px solid #c582ff;
+  background-color: #c582ff;
+}
+
+.color-2 {
+  border: 0.1px solid #34ace0;
+  background-color: #34ace0;
+}
+
+.color-3 {
+  border: 0.1px solid #ffe282;
+  background-color: #ffe282;
+}
+
+.color-4 {
+  border: 0.1px solid #ff71e3;
+  background-color: #ff71e3;
+}
+
+.color-5 {
+  border: 0.1px solid #afff82;
+  background-color: #afff82;
+}
+
+.color-6 {
+  border: 0.1px solid #82f6ff;
+  background-color: #82f6ff;
+}
+
+.color-7 {
+  border: 0.1px solid #a44444;
+  background-color: #a44444;
+}
+
+.color-9 {
+  border: 0.1px solid #ff0000;
+  background-color: #ff0000;
+}
+
+.color-10 {
+  border: 0.1px solid #ff8f10;
+  background-color: #242424;
+}
+
+.scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+.all {
+  display: flex;
+}
+
+.sticky-dates {
+  position: sticky;
+  z-index: 1;
+}
+
+.left-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin-top: 179px;
+  background-color: #fafafa;
+}
+
+.employee,
+.month {
+  width: 100%;
+  margin-right: 21.4px;
+}
+
+.all-names {
+  margin-top: 220px;
+}
+
+.names {
+  display: flex;
+  justify-content: space-between;
+  height: 34px;
+  color: #242424;
+  width: 100%;
+}
+
+.name {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 6px;
+}
+
+.all-name {
+  margin-right: 13px;
+  width: 110px;
+}
+
+.all-boxes {
+  display: flex;
+}
+
+.boxes {
+  border: 0.1px solid #ededed;
+  width: 35px;
+  height: 35px;
+  background: white;
+  cursor: pointer;
+}
+
+.date,
+.day {
+  text-align: center;
+}
+
+.employee {
+  color: #000000;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.heading {
+  font-size: 18px;
+  color: #ff8f10;
+  font-family: 'Poppins', sans-serif;
+}
+
+.side-head {
+  font-size: 13px;
+  color: #242424;
+  margin-top: 1px;
+}
+
+.work {
+  background: white;
+}
+
+.weekend {
+  background: #e6e6e6;
+}
+
+.paternity,
+.privilege,
+.unpaid,
+.adoption,
+.family,
+.floating,
+.unplanned,
+.absent,
+.holiday {
+  border-left: 0.1px solid;
+  border-right: 0.1px solid;
+}
+
+.paternity {
+  background: #c582ff;
+  border-color: #c582ff;
+}
+
+.privilege {
+  background: #34ace0;
+  border-color: #34ace0;
+}
+
+.unpaid {
+  background: #ffe282;
+  border-color: #ffe282;
+}
+
+.adoption {
+  background: #ff71e3;
+  border-color: #ff71e3;
+}
+
+.family {
+  background: #afff82;
+  border-color: #afff82;
+}
+
+.floating {
+  background: #82f6ff;
+  border-color: #82f6ff;
+}
+
+.unplanned {
+  background: #a44444;
+  border-color: #a44444;
+}
+
+.absent {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+
+.holiday {
+  background: #242424;
+  border-color: #ff8f10;
+}
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+
+.name-abbr {
+  text-decoration: none;
+}
+
+.menu {
+  width: 250px;
+  height: 120px;
+  border-radius: 17px;
+}
+
+.top-div {
+  width: auto;
+  height: 40px;
+  margin-top: -10px;
+  background: #242424;
+  font-family: 'Poppins', sans-serif;
+}
+
+.top-div > p {
+  color: #ffffff;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.newDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.absent-cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-absent {
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1352ca;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+
+.btn-cancel {
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.info-button {
+  margin-top: 12px;
+}
+
+.info-all {
+  padding-top: 50px;
+  border-radius: 20px;
+}
+
+.info-menu {
+  width: 230px;
+  height: auto;
+  border-radius: 17px;
+  margin-top: 7px;
+}
+
+.info-details {
+  display: flex;
+  margin-left: 11px;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.info-inline {
+  display: flex;
+  padding: 9px;
+}
+
+.legend {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #242424;
+}

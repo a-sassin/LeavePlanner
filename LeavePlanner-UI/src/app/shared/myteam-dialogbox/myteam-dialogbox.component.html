@@ -1,0 +1,46 @@
+<div mat-dialog-title class="dialogbox-title">
+    <div class="circle">
+        <mat-icon mat-dialog-close class="add-icon" (click)="navigateCreateTeam()">add_circle_outline</mat-icon>
+    </div>
+    <div class="top-bar">
+        <h2 class="heading">My Teams</h2>
+        <mat-form-field class="search-box" floatLabel="never">
+            <input matInput type="text" placeholder="Search" class="search" [(ngModel)]="nameSearch" />
+
+            <mat-icon matSuffix class="search-icon">search</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+<app-loading-spinner></app-loading-spinner>
+<mat-dialog-content class="container">
+    <p class="message">{{ message }}</p>
+    <mat-list class="list">
+        <mat-list-item class="list-item" *ngFor="let key of data | filter: nameSearch; index as i">
+            <div class="nameicon" [ngClass]="i % 2 == 0 ? { orangecolor: true } : { bluecolor: true }">
+                <p class="firstletter">{{ key.name.charAt(0) | uppercase }}</p>
+            </div>
+            <div>
+                <p mat-dialog-close (click)="navigate(key.name, key.teamId)" title="{{key.name}}">
+                    {{ teamLength(key.name) }}
+                </p>
+                <p class="members">{{ key.member }}</p>
+            </div>
+
+            <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="updateTeam(key.name, key.teamId)">
+                    <span>Update Team</span>
+                </button>
+                <button mat-menu-item (click)="transferOwnership(key.name, key.teamId)">
+                    <span>Transfer Ownership</span>
+                </button>
+                <button mat-dialog-close mat-menu-item (click)="deleteTeambox(key.name, key.teamId)">
+                    <span>Delete Team</span>
+                </button>
+            </mat-menu>
+        </mat-list-item>
+    </mat-list>
+</mat-dialog-content>

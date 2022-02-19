@@ -1,0 +1,34 @@
+<ngx-datatable class="material" [limit]="8" [rows]="rows" [rowHeight]="40" [headerHeight]="50" [columnMode]="'force'"
+  [sorts]="[{ prop: 'fromdate', dir: 'desc' }]" [footerHeight]="50">
+
+  <ngx-datatable-column name="Date" prop="rows" prop="fromdate">
+    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+      {{ row.fromdate | date: 'MMM d, y' }} -
+      {{ row.todate | date: 'MMM d, y' }}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Leave type" prop="type" [sortable]="false">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{ value }}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Reason of Leave" prop="reason" [sortable]="false">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      <div title="{{value}}">{{ reasonLength(value) }}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column class="actions" prop="rows" prop="active" name="Actions" [sortable]="false">
+    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+      <div [title]="value?'backdate leaves are disabled':''">
+        <a class="cancel" [ngClass]="{'cancel-btn':value,'cancel-button':!value}" (click)=onCancelLeave(row);>
+          Cancel Leave
+        </a>
+        <a class="edit" [ngClass]="{'edit-btn':value,'edit-button':!value}" (click)=onEditLeave(row);>
+          Edit Leave
+        </a>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+
+</ngx-datatable>
+<app-loading-spinner></app-loading-spinner>

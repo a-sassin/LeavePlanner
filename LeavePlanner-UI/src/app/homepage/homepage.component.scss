@@ -1,0 +1,159 @@
+.topnavbar {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  color: #0b64ca;
+  height: 50px;
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  z-index: 5;
+  box-shadow: 0 0 3px 0 rgb(143, 143, 143);
+}
+
+.ham {
+  display: flex;
+  flex-basis: 19%;
+  justify-content: space-between;
+  margin-left: 2px;
+}
+
+.menu {
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.topnavbar-heading {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+  cursor: pointer;
+}
+
+.topnavbar-heading > .heading {
+  margin-left: 14.5px;
+}
+
+.profile {
+  font-size: 30px;
+}
+
+.profile-button {
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.notify-button {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.list-content {
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  color: #242424;
+  font-size: 12px;
+  padding-left: 10px;
+}
+.request-date {
+  padding-left: 10px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  color: #0b64ca;
+}
+
+.list-nocontent {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: gray;
+  text-align: center;
+  padding: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.decline-btn,
+.accept-btn {
+  font-family: 'Poppins', sans-serif;
+}
+
+.accept-btn {
+  color: #0b64ca;
+}
+
+.decline-btn {
+  color: #242424;
+}
+
+.logout {
+  font-size: large;
+  padding: 1px;
+  margin-left: 2px;
+}
+
+.sidenavcontainer {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+  color: #0b64ca;
+  text-align: center;
+}
+
+.sidenav-menu,
+.sidenav-teams {
+  text-align: left;
+  font-size: small;
+  color: lightgrey;
+  margin-left: 37px;
+}
+
+.sidenav-teams {
+  margin-top: 25px;
+}
+
+.nav-list {
+  font-family: 'Poppins', sans-serif;
+  font-size: large;
+  margin-top: 75px;
+  margin-right: 6px;
+  margin-left: 0;
+}
+
+.icon {
+  margin-left: 20px;
+  margin-right: 15px;
+}
+
+.item {
+  outline: none;
+}
+
+.list-items {
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: gray;
+}
+
+.list-items:hover {
+  border-right: 6px solid #0b64ca;
+  color: #0b64ca;
+  background-color: rgb(231, 241, 254, 1);
+}
+
+.divider {
+  font-weight: lighter;
+  margin: 20px;
+}
+
+.list-divider {
+  font-weight: lighter;
+  margin: 10px;
+}

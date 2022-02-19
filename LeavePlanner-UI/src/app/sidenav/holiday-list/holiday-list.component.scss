@@ -1,0 +1,147 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.arrow {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+}
+
+.example-card {
+  margin-top: 10%;
+  width: 450px;
+  border-radius: 10px;
+}
+
+.title {
+  width: 100%;
+  font-weight: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  padding: auto;
+  justify-content: center;
+}
+
+.form-field {
+  width: 85%;
+  height: 50px;
+  border-radius: 10px;
+  border: dashed 2px #0b64ca;
+  background-color: rgba(11, 100, 202, 0.2);
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 20px;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+.date-form {
+  width: 100%;
+  margin-top: 10%;
+  border-radius: 10px;
+}
+
+.actions {
+  margin-top: 70px;
+  margin-bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-cancel {
+  width: 100px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  color: #0b64ca;
+  border: 1px solid #0b64ca;
+  margin-right: 30px;
+}
+
+.btn-upload {
+  width: 100px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  color: white;
+  background-color: #0b64ca;
+}
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+.upload-file {
+  border: 2px dashed #0b64ca;
+  background-color: rgba(11, 100, 202, 0.2);
+  height: 100px;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper input[type='file'] {
+  position: relative;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  min-height: 50px;
+  outline: none;
+  border: 1px solid black;
+}
+
+.d-block {
+  display: block;
+  margin: auto;
+  margin-top: 3%;
+}
+
+.btn .upload-file {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.upload-btn {
+  display: block;
+  font-size: 16px;
+  color: #0b64ca;
+  font-family: 'Poppins', sans-serif;
+}
+
+.upload-select-btn {
+  color: #5a5a5a;
+  font-size: small;
+  font-family: 'Poppins', sans-serif;
+}

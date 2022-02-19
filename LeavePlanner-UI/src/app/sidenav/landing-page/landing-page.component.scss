@@ -1,0 +1,100 @@
+.container {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.heading {
+  position: absolute;
+  margin-top: 220px;
+  left: 120px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #242424;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content,
+.content-sub {
+  max-width: 800px;
+  position: absolute;
+  margin-top: 260px;
+  left: 120px;
+  font-size: 27px;
+  font-family: 'Poppins', sans-serif;
+  color: #242424;
+  line-height: normal;
+}
+
+.content-sub {
+  margin-top: 310px;
+  font-size: 22px;
+}
+
+.image {
+  float: right;
+  position: absolute;
+  margin-top: 100px;
+  margin-right: 50px;
+  width: 500px;
+  height: 500px;
+  right: 0;
+}
+
+.circle {
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  border-radius: 100px;
+  background: #0f4a8e;
+  opacity: 0.5;
+  bottom: 15px;
+  left: 17px;
+}
+
+.big-circle {
+  width: 130px;
+  position: fixed;
+  height: 130px;
+  border-radius: 100px;
+  background: #d0ebfe;
+  bottom: -40px;
+  left: -30px;
+  padding: 15px 14px 29px 24px;
+}
+
+.row {
+  position: absolute;
+  margin-top: 400px;
+  left: 100px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  width: 500px;
+  justify-content: space-evenly;
+}
+
+.myteam {
+  width: 220px;
+  font-size: 20px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  border: solid 2px #0b64ca;
+  color: #0b64ca;
+  background-color: white;
+}
+
+.myleave {
+  width: 220px;
+  font-size: 20px;
+  padding: 10px;
+  box-shadow: -1px 9px 6px 0 rgba(11, 100, 202, 0.16);
+  background-color: #0b64ca;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  border-radius: 10px;
+}

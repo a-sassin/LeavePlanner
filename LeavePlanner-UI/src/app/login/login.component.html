@@ -1,0 +1,43 @@
+<app-loading-spinner></app-loading-spinner>
+<div class="container">
+    <div class="form">
+        <div class="heading">Leave Planner</div>
+        <div class="login">
+            <h1 class="title">Log In</h1>
+            <p class="subtitle">Log in with your GSLab AD user credentials</p>
+            <form [formGroup]="loginform">
+                <div>
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>User-ID</mat-label>
+                        <input matInput formControlName="username" [errorStateMatcher]="matcher" required />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" [errorStateMatcher]="matcher" formControlName="password" required />
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon style="font-size: medium">{{
+                hide ? 'visibility_off' : 'visibility'
+                }}</mat-icon>
+            </button>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-raised-button type="submit" [ngClass]="{ btn: loginform.valid }" [disabled]="!loginform.valid" (click)="onSubmit()" class="login-button">
+            Log in
+          </button>
+                </div>
+                <div class="checkbox">
+                    <mat-checkbox formControlName="rememberme" color="primary">Keep me signed in</mat-checkbox>
+                </div>
+            </form>
+            <mat-error class="error">
+                {{ errormessage }}
+            </mat-error>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="./assets/images/leaveimage.jpg" alt="login-photo" class="image" />
+    </div>
+</div>

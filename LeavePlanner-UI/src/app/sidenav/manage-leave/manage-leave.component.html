@@ -1,0 +1,26 @@
+<div class="arrow">
+  <abbr title="Go Back" class="name-abbr">
+    <button mat-icon-button>
+      <mat-icon class="arrow-cursor" (click)="arrow()">arrow_back</mat-icon>
+    </button>
+  </abbr>
+</div>
+<h2 class="heading">Manage My Leaves</h2>
+<div class="container">
+  <form class="options" [formGroup]="dateform">
+    <span class="date">Date</span>
+
+    <mat-form-field class="form-field">
+      <mat-label class="date">Enter Date</mat-label>
+      <input readonly matInput #dateinput [matDatepicker]="picker" formControlName="from"
+        (dateInput)="onDateChange($event.value)" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <span><button [ngClass]="{ reset: dateform.valid }" *ngIf="dateform.valid" (click)="onReset()">
+        Reset
+      </button></span>
+  </form>
+  <app-ngx-datatable [rows]="rows" (cancelLeaveData)="onCancelLeave($event)" (editLeaveData)="onEditLeave($event)">
+  </app-ngx-datatable>
+</div>
