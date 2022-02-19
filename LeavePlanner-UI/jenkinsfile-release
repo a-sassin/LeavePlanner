@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+     
+    stages {
+        stage('Building Docker Image') {
+            
+            steps {
+               sh "docker image build --tag leaveplanner-ui-test:latest . -f Dockerfile-Release"
+            }
+        }
+        stage('Delete Previous running Containers') {
+             
+            steps {
+               sh "docker container rm -f leaveplanner-ui-container-test | echo true"
+               sh "docker system prune -f"
+            }
+        }
+        stage('Running Docker Build on Port 5001') {
+             
+            steps {
+                sh "docker container run --name leaveplanner-ui-container-test -d -p 5001:80 leaveplanner-ui-test:latest"
+            }
+        }
+    }
+}
